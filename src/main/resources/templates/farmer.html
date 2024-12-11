@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to the Farmer's Portal of the Farming Awareness Platform.">
+    <title>Farmer's Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dashboard-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-container h1 {
+            text-align: center;
+            color: #2e8b57;
+        }
+
+        .dashboard-container p {
+            font-size: 1.2em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .features {
+            margin-top: 20px;
+        }
+
+        .features ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .features ul li {
+            margin-bottom: 10px;
+        }
+
+        .products {
+            margin-top: 40px;
+        }
+
+        .products form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .products form input, 
+        .products form textarea, 
+        .products form button {
+            padding: 10px;
+            font-size: 1em;
+        }
+
+        #productList ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        #productList ul li {
+            margin-bottom: 10px;
+        }
+
+        .video-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Farmer's Dashboard</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="resources.html">Resources</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="support.html">Support</a>
+        <a href="signup.html">Sign Out</a>
+    </nav>
+
+    <div class="dashboard-container">
+        <h1>Hello, Farmer!</h1>
+        <p>Welcome to your personalized dashboard where you can access essential resources, market updates, and expert advice to enhance your farming practices.</p>
+
+        <div class="features">
+            <h2>Features Available for You:</h2>
+            <ul>
+                <li>Access to the latest agricultural news and research.</li>
+                <li>Participate in community forums to share experiences.</li>
+                <li>Explore the online marketplace to buy and sell products.</li>
+                <li>Get expert advice on crop management and techniques.</li>
+                <li>Monitor weather forecasts tailored to your region.</li>
+            </ul>
+        </div>
+
+        <!-- Manage Your Products Section -->
+        <div class="products">
+            <h2>Manage Your Products</h2>
+            <!-- Product Form -->
+            <form id="addProductForm" action="#" method="POST" onsubmit="addProduct(event)">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+                
+                <label for="productPrice">Price (in USD):</label>
+                <input type="number" id="productPrice" name="productPrice" placeholder="Enter price" required>
+                
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" name="productDescription" rows="4" placeholder="Describe the product"></textarea>
+                
+                <button type="submit">Add Product</button>
+            </form>
+
+            <!-- Product List -->
+            <div id="productList">
+                <h3>Existing Products:</h3>
+                <ul id="productListItems">
+                    <li>No products added yet. Add your first product!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>Learn More About Farming Techniques</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/watch?v=5zVSjpqRiRQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+    </div>
+
+    <script>
+        let timeoutActive = false; // Tracks if the timeout is active
+    
+        function addProduct(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+    
+            // Check if timeout is active
+            if (timeoutActive) {
+                alert("You need to wait 5 minutes before adding another product.");
+                return;
+            }
+    
+            const productName = document.getElementById('productName').value;
+            const productPrice = document.getElementById('productPrice').value;
+            const productDescription = document.getElementById('productDescription').value;
+    
+            const productList = document.getElementById('productListItems');
+    
+            // Create a new list item with product details
+            const newProduct = document.createElement('li');
+            newProduct.textContent = `${productName} - $${productPrice}: ${productDescription}`;
+    
+            // Add the new product to the list
+            productList.appendChild(newProduct);
+    
+            // Reset the form fields
+            document.getElementById('addProductForm').reset();
+    
+            // Activate the timeout
+            timeoutActive = true;
+            const submitButton = document.querySelector('#addProductForm button');
+            submitButton.disabled = true;
+    
+            // Set a timeout to re-enable the form after 5 minutes (300,000 ms)
+            setTimeout(() => {
+                timeoutActive = false;
+                submitButton.disabled = false;
+                alert("You can now add another product.");
+            }, 300000); // 5 minutes
+        }
+    </script>
+    
+</body>
+</html>

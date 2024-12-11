@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to the Farmer's Portal of the Farming Awareness Platform.">
+    <title>Farmer's Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your CSS here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Farmer's Dashboard</h1>
+    </header>
+    <nav>
+        <a href="/dashboard">Dashboard</a>
+        <a href="resources.html">Resources</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="support.html">Support</a>
+        <a href="signup.html">Sign Out</a>
+    </nav>
+
+    <div class="dashboard-container">
+        <h1>Hello, Farmer!</h1>
+        <p>Welcome to your personalized dashboard where you can access essential resources, market updates, and expert advice to enhance your farming practices.</p>
+
+        <div class="features">
+            <h2>Features Available for You:</h2>
+            <ul>
+                <li>Access to the latest agricultural news and research.</li>
+                <li>Participate in community forums to share experiences.</li>
+                <li>Explore the online marketplace to buy and sell products.</li>
+                <li>Get expert advice on crop management and techniques.</li>
+                <li>Monitor weather forecasts tailored to your region.</li>
+            </ul>
+        </div>
+
+        <!-- Manage Your Products Section -->
+        <div class="products">
+            <h2>Manage Your Products</h2>
+            <!-- Product Form -->
+            <form th:action="@{/addProduct}" method="POST">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" name="productName" placeholder="Enter product name" required>
+                
+                <label for="productPrice">Price (in USD):</label>
+                <input type="number" id="productPrice" name="productPrice" placeholder="Enter price" required min="0.01" step="0.01">
+                
+                <label for="productDescription">Description:</label>
+                <textarea id="productDescription" name="productDescription" rows="4" placeholder="Describe the product"></textarea>
+                
+                <button type="submit">Add Product</button>
+            </form>
+
+            <!-- Product List -->
+            <div id="productList">
+                <h3>Existing Products:</h3>
+                <ul>
+                    <li th:each="product : ${products}">
+                        <span th:text="${product.name}">Product Name</span> -
+                        <span th:text="${product.price}">Price</span>: 
+                        <span th:text="${product.description}">Description</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Feedback Section -->
+            <div th:if="${productAdded}" style="color: green; margin-top: 10px;">
+                Product added successfully!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Any JavaScript logic goes here
+    </script>
+    
+</body>
+</html>

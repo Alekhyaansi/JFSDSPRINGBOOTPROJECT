@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .product-container {
+            margin: 50px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5em;
+            color: #2e8b57;
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 1em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .buy-btn {
+            background-color: #2e8b57;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+
+        .buy-btn:hover {
+            background-color: #1c5c3a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Farming Awareness Platform</h1>
+    </header>
+    <nav>
+        <a href="admin.html">Admin Dashboard</a>
+        <a href="public.html">View Products</a>
+    </nav>
+
+    <div class="product-container">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="pesticide1.webp" alt="Roundup (Glyphosate)">
+                <h3>Insecticide X</h3>
+                <p><strong>Use:</strong> This insecticide is effective in controlling a wide range of insects such as aphids, caterpillars, and beetles that damage crops. It helps in maintaining healthy plants and increases overall yield.</p>
+                <a href="payments.html">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="pesticide2.jpeg" alt="Sevin (Carbaryl)">
+                <h3>Fungicide Y</h3>
+                <p><strong>Use:</strong> Fungicide Y is used to protect plants from fungal infections like powdery mildew, rust, and blight. It prevents the spread of disease, ensuring better plant health and growth.</p>
+                <a href="payments.html">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="pesticide3.jpeg" alt="Imidacloprid (Admire, Premise)">
+                <h3>Herbicide Z</h3>
+                <p><strong>Use:</strong> Herbicide Z helps in controlling unwanted weeds and grasses that compete with crops for nutrients, water, and sunlight. It is essential for keeping fields clean and maximizing crop yield.</p>
+                <a href="payments.html">
+                    <button class="buy-btn">Buy Now</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

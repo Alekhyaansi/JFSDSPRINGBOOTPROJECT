@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Farming Awareness Platform</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        header {
+            background: #28a745;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Navigation styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background: #575757;
+        }
+
+        /* Section styling */
+        .section-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-content h2 {
+            font-size: 2.5em;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .section-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .team-section, .testimonial-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        /* Team Member Card */
+        .team-member {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 30%;
+            text-align: center;
+            margin: 15px;
+            padding: 20px;
+        }
+
+        .team-member img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Testimonial Card */
+        .testimonial {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 45%;
+            margin: 15px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
+        .testimonial .author {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>About Us</h1>
+        <p>Inspiring society about farming and empowering farmers through resources, connections, and community support.</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/services}">Services</a>
+        <a th:href="@{/contact}">Contact</a>
+    </nav>
+
+    <!-- Our Story Section -->
+    <section class="section-content">
+        <h2>Our Story</h2>
+        <p>Founded in 2024, our platform was built with a vision to connect farmers with the knowledge and resources they need to thrive in today’s competitive environment. We realized that while there are many agricultural experts and resources, access to these opportunities is often limited, especially for small and independent farmers. That’s why we created this platform — to bridge the gap and create a sustainable, connected farming community.</p>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="section-content">
+        <h2>What We Do</h2>
+        <p>We provide farmers with the tools and resources they need to succeed, including educational content from agricultural experts, opportunities to connect with different sectors, and a space for discussions and networking. Our mission is to empower farmers with the latest information, best practices, and support from the community to help them achieve better outcomes and improve their livelihood.</p>
+    </section>
+
+    <!-- Meet the Team Section -->
+    <section class="section-content">
+        <h2>Meet the Team</h2>
+        <div class="team-section">
+            <!-- Team Member 1 -->
+            <div class="team-member">
+                <img src="static/new1.jpg" alt="Team Member 1">
+                <h3>John Doe</h3>
+                <p>Founder & CEO</p>
+                <p>With a background in agriculture and technology, John leads the team with a vision to transform the agricultural landscape through technology and community-driven solutions.</p>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="team-member">
+                <img src="static/team2.jpg" alt="Team Member 2">
+                <h3>Lara Smith</h3>
+                <p>Agricultural Expert</p>
+                <p>Jane provides expert guidance and creates educational content for farmers, ensuring that they have access to reliable and up-to-date information.</p>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="team-member">
+                <img src="static/team3.jpeg" alt="Team Member 3">
+                <h3>Michael Lee</h3>
+                <p>Community Manager</p>
+                <p>Michael is responsible for managing the platform’s community, fostering discussions, and supporting farmers’ needs on the platform.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-content">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-section">
+            <!-- Testimonial 1 -->
+            <div class="testimonial">
+                <p>"This platform has been a game-changer for me. I’ve learned so much from the experts and connected with other farmers facing similar challenges. Highly recommend!"</p>
+                <div class="author">- Alex Johnson, Farmer</div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="testimonial">
+                <p>"The information provided here is invaluable. It’s great to have a place where farmers can come together and learn from each other’s experiences."</p>
+                <div class="author">- Sarah Brown, Agricultural Specialist</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Farming Awareness Platform. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

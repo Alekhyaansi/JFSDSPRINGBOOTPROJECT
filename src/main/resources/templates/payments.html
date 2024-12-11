@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .details p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #1e6e44;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Details</h1>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="name">Customer Name:</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="upi">UPI ID:</label>
+                <input type="text" id="upi" placeholder="Enter your UPI ID" required>
+            </div>
+            <div class="form-group">
+                <label for="product">Product:</label>
+                <select id="product" required>
+                    <option value="" disabled selected>Select a product</option>
+                    <option value="Roundup (Glyphosate)">Roundup (Glyphosate)</option>
+                    <option value="Sevin (Carbaryl)">Sevin (Carbaryl)</option>
+                    <option value="Imidacloprid (Admire, Premise)">Imidacloprid (Admire, Premise)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" placeholder="Enter quantity" required min="1">
+            </div>
+            <button type="submit" class="btn">Calculate Payment</button>
+        </form>
+
+        <div class="details" id="details-container" style="display: none;">
+            <p><strong>Customer Name:</strong> <span id="customer-name"></span></p>
+            <p><strong>UPI ID:</strong> <span id="upi-id"></span></p>
+            <p><strong>Product:</strong> <span id="product-name"></span></p>
+            <p><strong>Quantity:</strong> <span id="quantity-value"></span></p>
+            <p><strong>Price per Unit:</strong> ₹<span id="price-per-unit"></span></p>
+            <p><strong>Total Amount:</strong> ₹<span id="total-amount"></span></p>
+        </div>
+    </div>
+
+    <script>
+        const productPrices = { "Roundup (Glyphosate)": 1250, "Sevin (Carbaryl)": 1175, "Imidacloprid (Admire, Premise)": 1500 };
+
+        document.getElementById('payment-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const upi = document.getElementById('upi').value;
+            const product = document.getElementById('product').value;
+            const quantity = parseInt(document.getElementById('quantity').value, 10);
+
+            // Calculate price and total
+            const pricePerUnit = productPrices[product] || 0;
+            const totalAmount = pricePerUnit * quantity;
+
+            // Update details section
+            document.getElementById('customer-name').textContent = name;
+            document.getElementById('upi-id').textContent = upi;
+            document.getElementById('product-name').textContent = product;
+            document.getElementById('quantity-value').textContent = quantity;
+            document.getElementById('price-per-unit').textContent = pricePerUnit;
+            document.getElementById('total-amount').textContent = totalAmount;
+
+            // Show details container
+            document.getElementById('details-container').style.display = 'block';
+
+            // Redirect to QR code page
+            const paymentDetails = {
+                name,
+                upi,
+                product,
+                quantity,
+                totalAmount
+            };
+
+            // Store the payment details in sessionStorage
+            sessionStorage.setItem('paymentDetails', JSON.stringify(paymentDetails));
+
+            // Redirect to the QR code page
+            window.location.href = 'qrPage.html';
+        });
+    </script>
+</body>
+</html>

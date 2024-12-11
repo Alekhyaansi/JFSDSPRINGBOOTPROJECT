@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agricultural Expert Dashboard for the Farming Awareness Platform">
+    <title>Agricultural Expert - Farming Awareness Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .dashboard-container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .dashboard-container h2 {
+            text-align: center;
+            color: #2e8b57;
+        }
+
+        .dashboard-container p {
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .content-management {
+            margin-top: 30px;
+        }
+
+        .content-management button {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .content-management button:hover {
+            background-color: #1e5d3d;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Farming Awareness Platform - Agricultural Expert Dashboard</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="abt.html">About</a>
+        <a href="services1.html">Services</a>
+        <a href="contact1.html">Contact</a>
+        <a href="signup.html">Sign Out</a>
+    </nav>
+
+    <div class="dashboard-container">
+        <h2>Welcome, Agricultural Expert!</h2>
+        <p>Your role is to provide guidance, create educational content, and support farmers in improving their practices.</p>
+
+        <!-- Content Management Section -->
+        <div class="content-management">
+            <h3>Manage Educational Content</h3>
+            <button onclick="window.location.href='create-content.html'">Create New Content</button>
+            <button onclick="window.location.href='view-content.html'">View & Edit Existing Content</button>
+        </div>
+
+        <!-- Farmer Interaction Section -->
+        <div class="farmer-interaction">
+            <h3>Support Farmers</h3>
+            <button onclick="window.location.href='view-questions.html'">View Farmer Questions</button>
+            <button onclick="window.location.href='submit-guidance.html'">Submit Guidance</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Farming Awareness Platform. All rights reserved.</p>
+    </footer>
+</body>
+</html>

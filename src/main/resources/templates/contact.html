@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Farming Awareness Platform</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
+        header {
+            background: #28a745;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Navigation Styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background: #575757;
+        }
+
+        /* Section Content Styling */
+        .section-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-content h2 {
+            font-size: 2.5em;
+            color: #28a745;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form label {
+            font-size: 1.1em;
+            margin: 10px 0 5px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+
+        .contact-form button {
+            background: #28a745;
+            color: #fff;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background: #218838;
+        }
+
+        /* Additional Contact Info Styling */
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Contact Us</h1>
+        <p>If you have any questions or need support, feel free to reach out to us using the form below or through our contact information.</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/services}">Services</a>
+        <a th:href="@{/contact}">Contact</a>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="section-content">
+        <h2>Get In Touch</h2>
+        <p>We value your feedback and are here to assist you with any questions or concerns you may have. Please fill out the form below and we will get back to you as soon as possible.</p>
+
+        <!-- Contact Form -->
+        <form class="contact-form" action="submit_contact_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Your Email">
+
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required placeholder="Subject of Your Message">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <!-- Additional Contact Info -->
+        <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:agriculture@farmingplatform.com">support@farmingplatform.com</a></p>
+            <p><strong>Phone:</strong> +91 2345678678</p>
+            <p><strong>Address:</strong> KLUniversity, Vadeswaram ,Andhra Pradesh, india</p>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Farming Awareness Platform. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

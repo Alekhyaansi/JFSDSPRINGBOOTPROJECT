@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin page for viewing user data on the Farming Awareness Platform.">
+    <title>Admin - Farming Awareness Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .admin-container {
+            margin: 50px;
+        }
+
+        .admin-container h2 {
+            text-align: center;
+            color: #2e8b57;
+        }
+
+        .date-time {
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2e8b57;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        // JavaScript to fetch and display users from localStorage
+        window.onload = function() {
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            var tableBody = document.getElementById("userTableBody");
+
+            // Display user data in the table
+            users.forEach(function(user) {
+                var row = document.createElement("tr");
+
+                var cellName = document.createElement("td");
+                cellName.textContent = user.name;
+
+                var cellEmail = document.createElement("td");
+                cellEmail.textContent = user.email;
+
+                var cellPassword = document.createElement("td");
+                cellPassword.textContent = user.password;
+
+                var cellRole = document.createElement("td");
+                cellRole.textContent = user.role;
+
+                row.appendChild(cellName);
+                row.appendChild(cellEmail);
+                row.appendChild(cellPassword);
+                row.appendChild(cellRole);
+
+                tableBody.appendChild(row);
+            });
+
+            // Display the current date and time
+            var dateTimeElement = document.getElementById("currentDateTime");
+            var currentDate = new Date();
+            var formattedDate = currentDate.toLocaleString(); // Format the date and time
+
+            dateTimeElement.textContent = "Current Date and Time: " + formattedDate;
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="productinfo.html">Product</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Sign In</a>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Display current date and time -->
+        <div id="currentDateTime" class="date-time"></div>
+
+        <h2>Registered Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- User data will be dynamically populated here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

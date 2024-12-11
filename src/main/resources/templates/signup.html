@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for the Farming Awareness Platform to access various features and connect with the community.">
+    <title>Sign Up - Farming Awareness Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .signup-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .signup-container h1 {
+            text-align: center;
+            color: #2e8b57;
+        }
+
+        .signup-container label {
+            font-size: 1em;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .signup-container input, .signup-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .signup-container input[type="submit"] {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .signup-container input[type="submit"]:hover {
+            background-color: #1e5d3d;
+        }
+
+        .signin-option {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signin-option a {
+            color: #2e8b57;
+            text-decoration: none;
+        }
+
+        .signin-option a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #forgot-password {
+            display: none;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        #forgot-password input {
+            margin-bottom: 10px;
+        }
+
+        #reset-success {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function handleSignUp(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Clear previous error messages
+            document.querySelectorAll('.error-message').forEach(function(error) {
+                error.textContent = '';
+            });
+
+            // Get user input values
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var role = document.getElementById("role").value;
+
+            var valid = true;
+
+            // Validate Full Name
+            var namePattern = /[a-zA-Z]/; // Must contain at least one letter
+            if (!namePattern.test(name)) {
+                document.getElementById("name-error").textContent = "Full Name must contain at least one alphabet character.";
+                valid = false;
+            }
+
+            // Validate Password Strength
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                document.getElementById("password-error").textContent = "Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character.";
+                valid = false;
+            }
+
+            if (!valid) {
+                return;
+            }
+
+            // Create a user object
+            var user = {
+                name: name,
+                email: email,
+                password: password,
+                role: role
+            };
+
+            // Get existing users from localStorage, or initialize an empty array
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Add new user to the array
+            users.push(user);
+
+            // Save updated users array to localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Redirect based on role
+            if (role === "Farmer") {
+                window.location.href = "farmer.html"; // Redirect to farmer page
+            }
+            else if (role === "Admin") {
+                window.location.href = "admin.html"; // Redirect to admin page
+            }
+            else if (role === "Agricultural Expert") {
+                window.location.href = "agriculture-expert.html"; // Redirect to agriculture expert page
+            }
+            else if (role === "Public") {
+                window.location.href = "public.html"; // Redirect to public page
+            }
+            else {
+                window.location.href = "signin.html"; // Default redirect to Sign In page
+            }
+        }
+
+        // Show the Forgot Password form
+        function showForgotPassword() {
+            document.getElementById("forgot-password").style.display = "block";
+        }
+
+        // Handle password reset
+        function handlePasswordReset(event) {
+            event.preventDefault();
+            var email = document.getElementById("reset-email").value;
+
+            // Check if the email exists in localStorage
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            var user = users.find(function(u) {
+                return u.email === email;
+            });
+
+            if (user) {
+                document.getElementById("reset-password-container").style.display = "block";
+                document.getElementById("reset-success").textContent = ''; // Clear previous success message
+            } else {
+                alert("Email not found!");
+            }
+        }
+
+        // Handle reset password submission
+        function handleResetPassword(event) {
+            event.preventDefault();
+            var newPassword = document.getElementById("new-password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+            var email = document.getElementById("reset-email").value;
+
+            if (newPassword !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Update the user's password in localStorage
+            var users = JSON.parse(localStorage.getItem('users')) || [];
+            var user = users.find(function(u) {
+                return u.email === email;
+            });
+
+            if (user) {
+                user.password = newPassword;
+                localStorage.setItem('users', JSON.stringify(users));
+                document.getElementById("reset-success").textContent = "Your password has been successfully reset!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Farming Awareness Platform - Sign Up</h1>
+    </header>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/services}">Services</a>
+        <a th:href="@{/contact}">Contact</a>
+        <a th:href="@{/signin}">Signin</a>
+    </nav>
+
+    <div class="signup-container">
+        <h1>Create Your Account</h1>
+        <form onsubmit="handleSignUp(event)">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+            <div id="name-error" class="error-message"></div>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <div id="email-error" class="error-message"></div>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <div id="password-error" class="error-message"></div>
+
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Farmer">Farmer</option>
+                <option value="Agricultural Expert">Agricultural Expert</option>
+                <option value="Public">Public</option>
+            </select>
+            <div id="role-error" class="error-message"></div>
+
+            <input type="submit" value="SignUp">
+        </form>
+
+        <div class="signin-option">
+            <p>Already have an account? <a th:href="@{/signin}">Sign in</a></p>
+            <p><a href="javascript:void(0)" onclick="showForgotPassword()">Forgot Password?</a></p>
+        </div>
+
+        <!-- Forgot Password Form -->
+        <div id="forgot-password">
+            <h1>Reset Password</h1>
+            <p>Enter your email address to receive a password reset link.</p>
+            <form onsubmit="handlePasswordReset(event)">
+                <input type="email" id="reset-email" placeholder="Email Address" required aria-label="Email Address">
+                <button type="submit">Send Reset Link</button>
+            </form>
+            <!-- Reset Password Form (hidden initially) -->
+            <div id="reset-password-container" style="display:none;">
+                <h2>New Password</h2>
+                <form onsubmit="handleResetPassword(event)">
+                    <input type="password" id="new-password" placeholder="New Password" required aria-label="New Password">
+                    <input type="password" id="confirm-password" placeholder="Confirm New Password" required aria-label="Confirm Password">
+                    <input type="submit" value="Reset Password">
+                </form>
+            </div>
+            <script>
+                function handleResetPassword(event) {
+                    event.preventDefault(); // Prevent default form submission behavior
+            
+                    const newPassword = document.getElementById('new-password').value;
+                    const confirmPassword = document.getElementById('confirm-password').value;
+            
+                    // Check if both password fields match
+                    if (newPassword !== confirmPassword) {
+                        alert("Passwords do not match. Please try again.");
+                        return;
+                    }
+            
+                    // Update password in localStorage (or send to the server in a real application)
+                    localStorage.setItem('userPassword', newPassword);
+                    alert("Password reset successfully!");
+            
+                    // Hide the reset password container and optionally redirect to login
+                    document.getElementById('reset-password-container').style.display = 'none';
+                    document.getElementById('login-container').style.display = 'block';
+                }
+            </script>
+            

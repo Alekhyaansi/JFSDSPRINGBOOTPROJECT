@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A platform to raise awareness about the importance of farming and provide resources and support to farmers.">
+    <title>Farming Awareness Platform</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <style>
+        /* Basic styles for the homepage */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #2e8b57;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            padding: 14px 20px;
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .hero-section {
+            padding: 60px 20px;
+            text-align: center;
+            background-image: url('farmer.jpg'); /* If the image is in the same folder as the HTML/CSS file */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+
+        .hero-section p {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .hero-section .signup-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #2e8b57;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .hero-section .signup-btn:hover {
+            background-color: #45a049;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px 20px;
+        }
+
+        .content-section .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 23%;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .content-section .card:hover {
+            transform: scale(1.05);
+        }
+
+        .content-section .card h2 {
+            color: #2e8b57;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AgriConnect</h1>
+        <p>Inspire society about farming and help farmers benefit from various sectors.</p>
+    </header>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/about}">About</a>
+        <a th:href="@{/services}">Services</a>
+        <a th:href="@{/contact}">Contact</a>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <h1>Welcome to the Farming Awareness Platform</h1>
+        <p>Your one-stop solution to learn about farming, support farmers, and connect with experts.</p>
+        <a th:href="@{/signup}" class="signup-btn">Sign Up</a>
+    </section>
+
+    <section class="content-section">
+        <div class="card">
+            <h2>Admin</h2>
+            <p>Manage platform content, oversee user interactions, and ensure data accuracy.</p>
+        </div>
+        <div class="card">
+            <h2>Farmer</h2>
+            <p>Access resources, connect with different sectors, and participate in farming initiatives.</p>
+        </div>
+        <div class="card">
+            <h2>Agricultural Expert</h2>
+            <p>Provide guidance, create educational content, and support farmers' needs.</p>
+        </div>
+        <div class="card">
+            <h2>Public</h2>
+            <p>Explore content, learn about farming, and engage in discussions.</p>
+        </div>
+    </section>
+</body>
+</html>
